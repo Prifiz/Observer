@@ -30,6 +30,7 @@ public class PaintPane extends JPanel implements Observable {
     }
 
     public void drawSmile(Graphics graphics) {
+
         graphics.drawOval(Smile.getX(), Smile.getY(), Smile.getWIDTH(), Smile.getHEIGHT());
 
         Eye leftEye = smile.getLeftEye();
@@ -42,11 +43,19 @@ public class PaintPane extends JPanel implements Observable {
             int spotSize = leftEye.getSize() / SPOT_RATIO;
             int spotShift = (leftEye.getSize() - spotSize) / 2;
             graphics.fillOval(leftEye.getX() + spotShift, leftEye.getY() + spotShift, spotSize, spotSize);
+        } else {
+            int spotSize = leftEye.getSize() / SPOT_RATIO;
+            int spotShift = (leftEye.getSize() - spotSize) / 2;
+            graphics.clearRect(leftEye.getX() + spotShift, leftEye.getY() + spotShift, spotSize, spotSize);
         }
         if(leftEye.isOpen()) {
             int spotSize = rightEye.getSize() / SPOT_RATIO;
             int spotShift = (rightEye.getSize() - spotSize) / 2;
             graphics.fillOval(rightEye.getX() + spotShift, rightEye.getY() + spotShift, spotSize, spotSize);
+        } else {
+            int spotSize = rightEye.getSize() / SPOT_RATIO;
+            int spotShift = (rightEye.getSize() - spotSize) / 2;
+            graphics.clearRect(rightEye.getX() + spotShift, rightEye.getY() + spotShift, spotSize, spotSize);
         }
     }
 
