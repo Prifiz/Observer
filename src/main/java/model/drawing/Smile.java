@@ -1,67 +1,30 @@
 package model.drawing;
 
 import gui.Utils;
+import model.AbstractSmile;
 
-public class Smile {
+import java.util.ArrayList;
 
-    private static final int X = 30;
-    private static final int Y = 30;
-    private static final int WIDTH = 500;
-    private static final int HEIGHT = 500;
-    private Eye leftEye;
-    private Eye rightEye;
-    private Nose nose;
-    private Mouth mouth;
+public class Smile extends AbstractSmile {
 
-    public Smile() {
-        leftEye = new Eye(110, 110, 80);
-        rightEye = new Eye(370, 110, 80);
+    public Smile(int width, int height) {
+        super(width, height);
+        eyes = new ArrayList<>(2);
+        eyes.add(new Eye(110, 110, 80));
+        eyes.add(new Eye(370, 110, 80));
         nose = new Nose(200, 230, 160, 80);
         mouth = new Mouth(150, 340, 180, 80);
     }
 
-    public void changeEyesState() {
-        leftEye.blink();
-        rightEye.blink();
+    public void changeEyes() {
+        eyes.forEach(Eye::blink);
     }
 
-    public void changeNoseColor() {
+    public void changeNose() {
         nose.setColor(Utils.pickupDifferentRandomColor(nose.getColor()));
     }
 
-    public void changeMouthEmotion() {
+    public void changeMouth() {
         mouth.changeHappiness();
-    }
-
-    public static int getX() {
-        return X;
-    }
-
-    public static int getY() {
-        return Y;
-    }
-
-    public static int getWIDTH() {
-        return WIDTH;
-    }
-
-    public static int getHEIGHT() {
-        return HEIGHT;
-    }
-
-    public Eye getLeftEye() {
-        return leftEye;
-    }
-
-    public Eye getRightEye() {
-        return rightEye;
-    }
-
-    public Nose getNose() {
-        return nose;
-    }
-
-    public Mouth getMouth() {
-        return mouth;
     }
 }

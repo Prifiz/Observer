@@ -1,7 +1,7 @@
 package gui;
 
+import model.AbstractSmile;
 import observer.*;
-import model.drawing.Eye;
 import model.drawing.Mouth;
 import model.drawing.Nose;
 import model.drawing.Smile;
@@ -17,9 +17,9 @@ public class PaintPane extends JPanel implements Observable {
     private int x;
     private int y;
     private java.util.List<Observer> observers;
-    private Smile smile;
+    private AbstractSmile smile;
 
-    public PaintPane(Smile smile, boolean enableConstructorMode) {
+    public PaintPane(AbstractSmile smile) {
         this.observers = new ArrayList<>();
         this.smile = smile;
         addMouseListener(new MouseAdapter() {
@@ -28,6 +28,7 @@ public class PaintPane extends JPanel implements Observable {
                 x = e.getX();
                 y = e.getY();
                 notifyObservers(x, y);
+                repaint();
             }
         });
     }
@@ -36,14 +37,10 @@ public class PaintPane extends JPanel implements Observable {
 
         final Color DEFAULT_COLOR = Color.BLACK;
 
-        graphics.clearRect(Smile.getX(), Smile.getY(), Smile.getWIDTH(), Smile.getHEIGHT());
+        graphics.clearRect(smile.getX(), smile.getY(), smile.getWIDTH(), smile.getHEIGHT());
 
-        graphics.drawOval(Smile.getX(), Smile.getY(), Smile.getWIDTH(), Smile.getHEIGHT());
+        graphics.drawOval(smile.getX(), smile.getY(), smile.getWIDTH(), smile.getHEIGHT());
 
-        Eye leftEye = smile.getLeftEye();
-        graphics.drawOval(leftEye.getX(), leftEye.getY(), leftEye.getSize(), leftEye.getSize());
-        Eye rightEye = smile.getRightEye();
-        graphics.drawOval(rightEye.getX(), rightEye.getY(), rightEye.getSize(), rightEye.getSize());
 
         Nose nose = smile.getNose();
         graphics.setColor(nose.getColor());
@@ -58,29 +55,23 @@ public class PaintPane extends JPanel implements Observable {
         }
 
         final int SPOT_RATIO = 4;
-        if(leftEye.isOpen()) {
-            int spotSize = leftEye.getSize() / SPOT_RATIO;
-            int spotShift = (leftEye.getSize() - spotSize) / 2;
-            graphics.fillOval(leftEye.getX() + spotShift, leftEye.getY() + spotShift, spotSize, spotSize);
-        } else {
-            int spotSize = leftEye.getSize() / SPOT_RATIO;
-            int spotShift = (leftEye.getSize() - spotSize) / 2;
-            graphics.clearRect(leftEye.getX() + spotShift, leftEye.getY() + spotShift, spotSize, spotSize);
-        }
-        if(leftEye.isOpen()) {
-            int spotSize = rightEye.getSize() / SPOT_RATIO;
-            int spotShift = (rightEye.getSize() - spotSize) / 2;
-            graphics.fillOval(rightEye.getX() + spotShift, rightEye.getY() + spotShift, spotSize, spotSize);
-        } else {
-            int spotSize = rightEye.getSize() / SPOT_RATIO;
-            int spotShift = (rightEye.getSize() - spotSize) / 2;
-            graphics.clearRect(rightEye.getX() + spotShift, rightEye.getY() + spotShift, spotSize, spotSize);
-        }
+        smile.getEyes().forEach(eye -> {
+            graphics.drawOval(eye.getX(), eye.getY(), eye.getSize(), eye.getSize());
+            if(eye.isOpen()) {
+                int spotSize = eye.getSize() / SPOT_RATIO;
+                int spotShift = (eye.getSize() - spotSize) / 2;
+                graphics.fillOval(eye.getX() + spotShift, eye.getY() + spotShift, spotSize, spotSize);
+            } else {
+                int spotSize = eye.getSize() / SPOT_RATIO;
+                int spotShift = (eye.getSize() - spotSize) / 2;
+                graphics.clearRect(eye.getX() + spotShift, eye.getY() + spotShift, spotSize, spotSize);
+            }
+        });
     }
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(700, 700);
+        return new Dimension(smile.getWIDTH(), smile.getHEIGHT());
     }
 
     @Override

@@ -1,8 +1,8 @@
 package observer;
 
 
-import model.drawing.Smile;
+import model.AbstractSmile;
 
 public interface Observer {
-    void handleEvent(int x, int y, Smile smile);
+    void handleEvent(int x, int y, AbstractSmile smile);
 }
