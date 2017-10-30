@@ -14,11 +14,16 @@ public class Smile {
     public Smile() {
         leftEye = new Eye(110, 110, 80);
         rightEye = new Eye(370, 110, 80);
+        nose = new Nose(200, 230, 160, 80);
     }
 
     public void changeEyesState() {
         leftEye.blink();
         rightEye.blink();
+    }
+
+    public void changeNoseColor() {
+        nose.setColor(Utils.pickupDifferentRandomColor(nose.getColor()));
     }
 
     public static int getX() {

@@ -1,8 +1,6 @@
 package gui;
 
 import observer.*;
-import sun.applet.Main;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -31,6 +29,8 @@ public class PaintPane extends JPanel implements Observable {
 
     public void drawSmile(Graphics graphics) {
 
+        final Color DEFAULT_COLOR = Color.BLACK;
+
         graphics.clearRect(Smile.getX(), Smile.getY(), Smile.getWIDTH(), Smile.getHEIGHT());
 
         graphics.drawOval(Smile.getX(), Smile.getY(), Smile.getWIDTH(), Smile.getHEIGHT());
@@ -39,6 +39,11 @@ public class PaintPane extends JPanel implements Observable {
         graphics.drawOval(leftEye.getX(), leftEye.getY(), leftEye.getSize(), leftEye.getSize());
         Eye rightEye = smile.getRightEye();
         graphics.drawOval(rightEye.getX(), rightEye.getY(), rightEye.getSize(), rightEye.getSize());
+
+        Nose nose = smile.getNose();
+        graphics.setColor(nose.getColor());
+        graphics.fillOval(nose.getX(), nose.getY(), nose.getWidth(), nose.getHeight());
+        graphics.setColor(DEFAULT_COLOR);
 
         final int SPOT_RATIO = 4;
         if(leftEye.isOpen()) {

@@ -1,7 +1,5 @@
 import gui.PaintPane;
-import observer.EyesBlinker;
-import observer.Observer;
-import observer.Smile;
+import observer.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +16,8 @@ public class Main {
                 JFrame frame = new JFrame("Observer Lab");
                 PaintPane paintPane = new PaintPane(smile);
                 Observer eyesBlinker = new EyesBlinker(paintPane);
+                Observer noseColorChanger = new NoseColorChanger(paintPane);
+                Observer mouthEmotionInverter = new MouthEmotionInverter(paintPane);
                 frame.getContentPane().add(paintPane);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
