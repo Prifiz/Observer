@@ -32,8 +32,8 @@ public class EyesChanger implements Observer {
 
     private boolean isEyeSpotted(Eye eye, int x, int y) {
         return x > eye.getX() &&
-                x < eye.getX() + eye.getSize() &&
+                x < eye.getX() + eye.getWidth() &&
                 y > eye.getY() &&
-                y < eye.getY() + eye.getSize();
+                y < eye.getY() + eye.getHeight();
     }
 }

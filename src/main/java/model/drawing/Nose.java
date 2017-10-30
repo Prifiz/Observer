@@ -9,12 +9,23 @@ public class Nose {
     private int height;
     private Color color;
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    private String imagePath;
+
     public Nose(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.color = Color.BLACK;
+    }
+
+    public Nose setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+        return this;
     }
 
     public void setColor(Color color) {

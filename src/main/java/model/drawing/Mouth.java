@@ -8,6 +8,12 @@ public class Mouth {
     private int height;
     private boolean happy;
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    private String imagePath;
+
     public Mouth(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
@@ -18,6 +24,11 @@ public class Mouth {
 
     public void changeHappiness() {
         this.happy = !this.happy;
+    }
+
+    public Mouth setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+        return this;
     }
 
     public int getX() {
