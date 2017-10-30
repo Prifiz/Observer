@@ -1,6 +1,9 @@
-package observer;
+package observer.observers;
 
 import gui.PaintPane;
+import observer.Observer;
+import model.drawing.Mouth;
+import model.drawing.Smile;
 
 public class MouthEmotionInverter implements Observer {
 

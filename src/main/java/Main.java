@@ -1,5 +1,8 @@
 import gui.PaintPane;
-import observer.*;
+import model.drawing.Smile;
+import observer.observers.EyesBlinker;
+import observer.observers.MouthEmotionInverter;
+import observer.observers.NoseColorChanger;
 
 import javax.swing.*;
 import java.awt.*;

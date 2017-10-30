@@ -1,4 +1,4 @@
-package observer;
+package model.drawing;
 
 import java.awt.*;
 

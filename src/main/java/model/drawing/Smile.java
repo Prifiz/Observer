@@ -1,4 +1,6 @@
-package observer;
+package model.drawing;
+
+import gui.Utils;
 
 public class Smile {
 

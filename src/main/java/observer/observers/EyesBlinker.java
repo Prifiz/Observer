@@ -1,6 +1,9 @@
-package observer;
+package observer.observers;
 
 import gui.PaintPane;
+import observer.Observer;
+import model.drawing.Eye;
+import model.drawing.Smile;
 
 public class EyesBlinker implements Observer {
 

@@ -1,6 +1,11 @@
 package gui;
 
 import observer.*;
+import model.drawing.Eye;
+import model.drawing.Mouth;
+import model.drawing.Nose;
+import model.drawing.Smile;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;

@@ -1,6 +1,9 @@
-package observer;
+package observer.observers;
 
 import gui.PaintPane;
+import observer.Observer;
+import model.drawing.Nose;
+import model.drawing.Smile;
 
 public class NoseColorChanger implements Observer {
 
