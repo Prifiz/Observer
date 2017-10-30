@@ -31,6 +31,8 @@ public class PaintPane extends JPanel implements Observable {
 
     public void drawSmile(Graphics graphics) {
 
+        graphics.clearRect(Smile.getX(), Smile.getY(), Smile.getWIDTH(), Smile.getHEIGHT());
+
         graphics.drawOval(Smile.getX(), Smile.getY(), Smile.getWIDTH(), Smile.getHEIGHT());
 
         Eye leftEye = smile.getLeftEye();
