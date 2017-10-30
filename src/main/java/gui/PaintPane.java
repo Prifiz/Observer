@@ -19,7 +19,7 @@ public class PaintPane extends JPanel implements Observable {
     private java.util.List<Observer> observers;
     private Smile smile;
 
-    public PaintPane(Smile smile) {
+    public PaintPane(Smile smile, boolean enableConstructorMode) {
         this.observers = new ArrayList<>();
         this.smile = smile;
         addMouseListener(new MouseAdapter() {

@@ -16,7 +16,7 @@ public class Main {
                 Smile smile = new Smile();
 
                 JFrame frame = new JFrame("Observer Lab");
-                PaintPane paintPane = new PaintPane(smile);
+                PaintPane paintPane = new PaintPane(smile, false);
                 new EyesBlinker(paintPane);
                 new NoseColorChanger(paintPane);
                 new MouthEmotionInverter(paintPane);
