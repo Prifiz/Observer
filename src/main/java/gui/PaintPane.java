@@ -45,6 +45,13 @@ public class PaintPane extends JPanel implements Observable {
         graphics.fillOval(nose.getX(), nose.getY(), nose.getWidth(), nose.getHeight());
         graphics.setColor(DEFAULT_COLOR);
 
+        Mouth mouth = smile.getMouth();
+        if(mouth.isHappy()) {
+            graphics.drawArc(mouth.getX(), mouth.getY(), mouth.getWidth(), mouth.getHeight(), 180, 180);
+        } else {
+            graphics.drawArc(mouth.getX(), mouth.getY(), mouth.getWidth(), mouth.getHeight(), 0, 180);
+        }
+
         final int SPOT_RATIO = 4;
         if(leftEye.isOpen()) {
             int spotSize = leftEye.getSize() / SPOT_RATIO;

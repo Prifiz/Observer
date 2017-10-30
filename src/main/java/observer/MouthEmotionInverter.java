@@ -13,6 +13,17 @@ public class MouthEmotionInverter implements Observer {
 
     @Override
     public void handleEvent(int x, int y, Smile smile) {
+        if (isMouthSpotted(x, y, smile)) {
+            smile.changeMouthEmotion();
+            paintPane.repaint();
+        }
+    }
 
+    private boolean isMouthSpotted(int x, int y, Smile smile) {
+        Mouth mouth = smile.getMouth();
+        return  x > mouth.getX() &&
+                x < mouth.getX() + mouth.getWidth() &&
+                y > mouth.getY() &&
+                y < mouth.getY() + mouth.getHeight();
     }
 }

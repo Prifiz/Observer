@@ -15,6 +15,7 @@ public class Smile {
         leftEye = new Eye(110, 110, 80);
         rightEye = new Eye(370, 110, 80);
         nose = new Nose(200, 230, 160, 80);
+        mouth = new Mouth(150, 340, 180, 80);
     }
 
     public void changeEyesState() {
@@ -24,6 +25,10 @@ public class Smile {
 
     public void changeNoseColor() {
         nose.setColor(Utils.pickupDifferentRandomColor(nose.getColor()));
+    }
+
+    public void changeMouthEmotion() {
+        mouth.changeHappiness();
     }
 
     public static int getX() {

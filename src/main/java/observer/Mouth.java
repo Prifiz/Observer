@@ -1,4 +1,42 @@
 package observer;
 
 public class Mouth {
+
+    private int x;
+    private int y;
+    private int width;
+    private int height;
+    private boolean happy;
+
+    public Mouth(int x, int y, int width, int height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.happy = true;
+    }
+
+    public void changeHappiness() {
+        this.happy = !this.happy;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public boolean isHappy() {
+        return happy;
+    }
 }
