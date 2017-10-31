@@ -12,7 +12,7 @@ public class Main {
         try {
             SwingUtilities.invokeAndWait(() -> EventQueue.invokeLater(() -> {
                 JFrame frame = new JFrame("Observer Lab");
-                final boolean ENABLE_CONSTRUCTOR = false;
+                final boolean ENABLE_CONSTRUCTOR = true;
                 final int SIZE = 500;
                 Observable pane = ObservableFactory.getObservable(ENABLE_CONSTRUCTOR, SIZE, SIZE);
                 new EyesChanger(pane);

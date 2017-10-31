@@ -13,26 +13,26 @@ public class ConstructedSmile extends AbstractSmile {
         super(width, height);
         eyes = new ArrayList<>(1);
         Eye eye = new Eye(getX(), getY(), getWIDTH(), getHEIGHT() / 3)
-                .setImagePath(Utils.getRandomImagePath("eyes"));
+                .setImagePath(Utils.getDifferentRandomImagePath("eyes", ""));
         eyes.add(eye);
         nose = new Nose(getX(), getY() + getHEIGHT() / 3, getWIDTH(), getHEIGHT() / 3)
-                .setImagePath(Utils.getRandomImagePath("noses"));
+                .setImagePath(Utils.getDifferentRandomImagePath("noses", ""));
         mouth = new Mouth(getX(), getY() + 2 * getHEIGHT() / 3, getWIDTH(), getHEIGHT() / 3)
-                .setImagePath(Utils.getRandomImagePath("mouths"));
+                .setImagePath(Utils.getDifferentRandomImagePath("mouths", ""));
     }
 
     @Override
     public void changeEyes() {
-        eyes.forEach(eye -> eye.setImagePath(Utils.getRandomImagePath("eyes")));
+        eyes.forEach(eye -> eye.setImagePath(Utils.getDifferentRandomImagePath("eyes", eye.getImagePath())));
     }
 
     @Override
     public void changeNose() {
-        nose.setImagePath(Utils.getRandomImagePath("noses"));
+        nose.setImagePath(Utils.getDifferentRandomImagePath("noses", nose.getImagePath()));
     }
 
     @Override
     public void changeMouth() {
-        mouth.setImagePath(Utils.getRandomImagePath("mouths"));
+        mouth.setImagePath(Utils.getDifferentRandomImagePath("mouths", mouth.getImagePath()));
     }
 }

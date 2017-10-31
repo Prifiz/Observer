@@ -34,6 +34,14 @@ public class Utils {
         }
     }
 
+    public static String getDifferentRandomImagePath(String dirName, String currentPath) {
+        String result = getRandomImagePath(dirName);
+        while (currentPath.equals(result)) {
+            result = getRandomImagePath(dirName);
+        }
+        return result;
+    }
+
     public static BufferedImage resize(BufferedImage image, int newWidth, int newHeight) {
         if(image == null) {
             return null;
